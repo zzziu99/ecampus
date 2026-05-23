@@ -1,7 +1,7 @@
 import sqlite3
 import os, re, json, urllib.request
 from flask import Flask, jsonify, request, render_template
-from ddgs import DDGS
+from duckduckgo_search import DDGS
 from dotenv import load_dotenv
 import markdown as md
 
