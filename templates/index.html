@@ -3,36 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<meta name="theme-color" content="#FDF8F5">
+<meta name="theme-color" content="#F7F9FC">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="校园百事通">
+<meta name="apple-mobile-web-app-title" content="E校园">
 <link rel="manifest" href="/static/manifest.json">
-<title>校园百事通</title>
+<title>E校园</title>
 <script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
 <style>
 /* ========== TOKENS ========== */
 :root {
   /* ---- Color scales (Radix-inspired) ---- */
-  --tomato-1: #fffcfc;
-  --tomato-2: #fff8f7;
-  --tomato-3: #ffefe6;
-  --tomato-4: #ffe4d8;
-  --tomato-5: #fdd7c8;
-  --tomato-6: #f7c5b2;
-  --tomato-7: #efb09a;
-  --tomato-8: #e8957d;
-  --tomato-9: #e54d2e;
-  --tomato-10: #db3d1f;
-  --tomato-11: #c93216;
-  --tomato-12: #5c271f;
+  --blue-1: #fbfdff;
+  --blue-2: #f4faff;
+  --blue-3: #e6f4fe;
+  --blue-4: #d5efff;
+  --blue-5: #c2e5ff;
+  --blue-6: #aad8ff;
+  --blue-7: #8bc8f5;
+  --blue-8: #65b5f0;
+  --blue-9: #2196f3;
+  --blue-10: #1a8ad6;
+  --blue-11: #1570b8;
+  --blue-12: #1a3d5c;
 
-  --amber-3: #fef3dd;
-  --amber-5: #fce4b3;
-  --amber-6: #fad893;
-  --amber-7: #f2ce8a;
-  --amber-8: #e2a336;
-  --amber-9: #ffc53d;
-  --amber-10: #e8a622;
+  --cyan-3: #e4f5fa;
+  --cyan-5: #c3e6f3;
+  --cyan-6: #b0dcec;
+  --cyan-7: #8fcde1;
+  --cyan-8: #61b4cf;
+  --cyan-9: #00b4d8;
+  --cyan-10: #0090ab;
 
   --green-3: #e6f7ed;
   --green-5: #c2f0d0;
@@ -97,7 +98,7 @@
   --tracking-wider:0.06em;
 
   /* ---- Theme tokens ---- */
-  --bg: #FDF8F5;
+  --bg: #F7F9FC;
   --surface: #ffffff;
   --text: var(--sand-12);
   --text-secondary: var(--sand-11);
@@ -105,13 +106,13 @@
   --text-muted: var(--sand-6);
   --border-light: var(--sand-3);
   --border-hover: var(--sand-4);
-  --header-bg: rgba(253,248,245,0.85);
+  --header-bg: rgba(247,249,252,0.85);
   --nav-bg: rgba(255,255,255,0.92);
   --input-bg: #ffffff;
-  --hover-bg: var(--tomato-2);
+  --hover-bg: var(--blue-2);
   --overlay-bg: var(--sand-3);
-  --chat-input-bg: rgba(253,248,245,0.92);
-  --hero-bg: linear-gradient(135deg,var(--tomato-3),var(--amber-3));
+  --chat-input-bg: rgba(247,249,252,0.92);
+  --hero-bg: linear-gradient(135deg,var(--blue-3),var(--cyan-3));
   --skeleton-bg: var(--sand-3);
   --skeleton-shine: var(--sand-2);
   --shadow-sm:0 1px 3px rgba(0,0,0,0.06);
@@ -119,12 +120,12 @@
   --shadow-lg:0 4px 24px rgba(0,0,0,0.08);
 
   /* ---- Brand aliases ---- */
-  --coral: var(--tomato-9);
-  --coral-dark: var(--tomato-10);
-  --coral-light: var(--tomato-3);
-  --coral-glow: rgba(229,77,46,0.15);
-  --sunny: var(--amber-9);
-  --sunny-light: var(--amber-3);
+  --coral: var(--blue-9);
+  --coral-dark: var(--blue-10);
+  --coral-light: var(--blue-3);
+  --coral-glow: rgba(33,150,243,0.15);
+  --sunny: var(--cyan-9);
+  --sunny-light: var(--cyan-3);
   --mint: var(--green-9);
   --mint-light: var(--green-3);
   --slate: var(--sand-11);
@@ -283,15 +284,16 @@ body{
 .chat-msg{display:flex;gap:var(--sp-8);margin-bottom:var(--sp-16);animation:fadeIn .3s ease}
 .chat-msg.user{flex-direction:row-reverse}
 .chat-avatar{
-  width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  font-size:12px;font-weight:var(--font-bold);color:#fff
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  color:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.1)
 }
-.chat-avatar.bot{background:var(--coral)}
+.chat-avatar.bot{background:linear-gradient(135deg,var(--coral),var(--coral-dark))}
+.chat-avatar.user{background:var(--sand-6)}
+.chat-avatar i{width:18px;height:18px}
 .typing-dots span{animation:dotPulse 1.4s infinite;opacity:0;font-size:24px;line-height:1}
 .typing-dots span:nth-child(2){animation-delay:.2s}
 .typing-dots span:nth-child(3){animation-delay:.4s}
 @keyframes dotPulse{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
-.chat-avatar.user{background:var(--slate)}
 .chat-bubble{
   max-width:80%;padding:var(--sp-16) var(--sp-16);border-radius:var(--radius-lg);
   font-size:var(--font-body);line-height:var(--leading-body);letter-spacing:var(--tracking-wide)
@@ -435,26 +437,26 @@ body{
 
 /* ========== DARK THEME ========== */
 [data-theme="dark"] {
-  --tomato-1: #1d1412;
-  --tomato-2: #2a1814;
-  --tomato-3: #3d1f18;
-  --tomato-4: #4f241b;
-  --tomato-5: #602c22;
-  --tomato-6: #74372c;
-  --tomato-7: #92493c;
-  --tomato-8: #b85d4c;
-  --tomato-9: #e54d2e;
-  --tomato-10: #ec6b52;
-  --tomato-11: #f4a090;
-  --tomato-12: #fed7d0;
+  --blue-1: #0f1724;
+  --blue-2: #172034;
+  --blue-3: #1c2a44;
+  --blue-4: #203554;
+  --blue-5: #284166;
+  --blue-6: #32507a;
+  --blue-7: #416491;
+  --blue-8: #557db0;
+  --blue-9: #2196f3;
+  --blue-10: #47a8f5;
+  --blue-11: #8bc8f8;
+  --blue-12: #cce5ff;
 
-  --amber-3: #3a240b;
-  --amber-5: #5e320d;
-  --amber-6: #713f12;
-  --amber-7: #89511a;
-  --amber-8: #a86922;
-  --amber-9: #ffc53d;
-  --amber-10: #f6c340;
+  --cyan-3: #0c2e36;
+  --cyan-5: #0f4c54;
+  --cyan-6: #145c66;
+  --cyan-7: #1c7280;
+  --cyan-8: #248b9e;
+  --cyan-9: #00b4d8;
+  --cyan-10: #20bcd4;
 
   --green-3: #152d22;
   --green-5: #1a4831;
@@ -482,17 +484,17 @@ body{
   --header-bg: rgba(21,20,18,0.85);
   --nav-bg: rgba(31,30,28,0.92);
   --input-bg: var(--sand-3);
-  --hover-bg: var(--tomato-2);
+  --hover-bg: var(--blue-2);
   --overlay-bg: var(--sand-3);
   --chat-input-bg: rgba(21,20,18,0.92);
-  --hero-bg: linear-gradient(135deg,var(--tomato-3),var(--amber-3));
+  --hero-bg: linear-gradient(135deg,var(--blue-3),var(--cyan-3));
   --skeleton-bg: var(--sand-3);
   --skeleton-shine: var(--sand-4);
   --shadow-sm:0 1px 3px rgba(0,0,0,0.3);
   --shadow-md:0 2px 8px rgba(0,0,0,0.35);
   --shadow-lg:0 4px 24px rgba(0,0,0,0.4);
 
-  --coral-glow: rgba(229,77,46,0.25);
+  --coral-glow: rgba(33,150,243,0.25);
 }
 [data-theme="dark"] .profile-card{background:linear-gradient(135deg,var(--sand-4),var(--sand-3))}
 [data-theme="dark"] .profile-card::before{background:rgba(255,255,255,0.03)}
@@ -504,6 +506,53 @@ body{
 /* ========== UTILITY ========== */
 .spacer{flex:1}
 .hidden{display:none!important}
+
+/* ========== CHAT MARKDOWN ========== */
+.chat-bubble{word-break:break-word;overflow-wrap:break-word}
+.chat-bubble p{margin:0 0 10px;line-height:1.65}
+.chat-bubble p:last-child{margin-bottom:0}
+.chat-bubble ul,.chat-bubble ol{margin:6px 0 10px;padding-left:22px}
+.chat-bubble li{margin:4px 0;line-height:1.6}
+.chat-bubble li>ul,.chat-bubble li>ol{margin:2px 0}
+.chat-bubble strong{font-weight:700}
+.chat-bubble em{font-style:italic}
+.chat-bubble table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px;border:1px solid var(--border-light);border-radius:8px;overflow:hidden;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.chat-bubble th,.chat-bubble td{border-bottom:1px solid var(--border-light);padding:8px 12px;text-align:left;white-space:nowrap}
+.chat-bubble th{background:var(--coral-light);color:var(--coral-dark);font-weight:600;font-size:12px;letter-spacing:0.04em}
+.chat-bubble td{background:var(--surface)}
+.chat-bubble tr:last-child td{border-bottom:none}
+.chat-bubble tr:nth-child(even) td{background:var(--bg)}
+.chat-bubble code{font-family:"JetBrains Mono","Consolas",monospace;font-size:0.9em;background:var(--overlay-bg);padding:2px 6px;border-radius:4px}
+.chat-bubble pre{position:relative;margin:10px 0;padding:12px;padding-top:0;background:var(--sand-2);border-radius:8px;overflow-x:auto}
+.chat-bubble pre code{background:none;padding:0;border-radius:0;display:block;line-height:1.6;font-size:13px}
+.chat-bubble blockquote{margin:10px 0;padding:8px 14px;border-left:3px solid var(--coral);color:var(--text-secondary);background:var(--coral-light);border-radius:0 8px 8px 0}
+.chat-bubble a{color:var(--coral-dark);text-decoration:underline;text-underline-offset:2px}
+.chat-bubble hr{border:none;border-top:1px solid var(--border-light);margin:14px 0}
+.chat-bubble h1,.chat-bubble h2,.chat-bubble h3,.chat-bubble h4{font-weight:700;margin:14px 0 6px;line-height:1.3}
+.chat-bubble h1{font-size:17px}
+.chat-bubble h2{font-size:16px;border-bottom:1px solid var(--border-light);padding-bottom:4px}
+.chat-bubble h3{font-size:15px}
+.chat-bubble h4{font-size:14px}
+.code-header{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;margin:0 -12px 8px -12px;background:var(--sand-4);border-radius:8px 8px 0 0;font-size:11px;color:var(--text-tertiary);letter-spacing:0.06em;font-weight:500;position:sticky;left:0}
+.code-copy{background:none;border:none;cursor:pointer;color:var(--text-tertiary);font-size:11px;display:flex;align-items:center;gap:4px;padding:2px 6px;border-radius:4px;transition:all .2s;font-family:inherit}
+.code-copy:hover{background:var(--overlay-bg);color:var(--text)}
+.chat-bubble .stream-c{display:inline-block;width:2px;height:1em;background:var(--coral);vertical-align:text-bottom;animation:blink 0.8s infinite;margin-left:1px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.chat-content{display:flex;flex-direction:column;align-items:flex-start;gap:3px;max-width:80%}
+.chat-footer{display:flex;align-items:center;gap:6px;padding:2px 4px 0}
+.chat-source{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;letter-spacing:0.04em;line-height:1.4;white-space:nowrap}
+.chat-source.kb{background:var(--green-3);color:var(--green-9)}
+.chat-source.web{background:var(--coral-light);color:var(--coral-dark)}
+.chat-source i{width:12px;height:12px}
+.msg-copy{background:none;border:none;cursor:pointer;color:var(--text-tertiary);font-size:10px;display:flex;align-items:center;gap:3px;padding:2px 6px;border-radius:6px;transition:all .2s;font-family:inherit;letter-spacing:0.03em}
+.msg-copy:hover{background:var(--overlay-bg);color:var(--text)}
+.copy-toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:500;opacity:0;transition:opacity .3s;z-index:100;pointer-events:none}
+.copy-toast.show{opacity:1}
+[data-theme="dark"] .chat-bubble pre{background:#1a1a1a}
+[data-theme="dark"] .code-header{background:#2a2a2a}
+[data-theme="dark"] .chat-bubble th{background:var(--blue-3);color:var(--blue-11)}
+[data-theme="dark"] .chat-bubble blockquote{background:var(--blue-2)}
+[data-theme="dark"] .chat-source.kb{background:rgba(48,164,108,0.15);color:var(--green-10)}
 </style>
 </head>
 <body>
@@ -512,7 +561,7 @@ body{
 
   <!-- ===== HEADER ===== -->
   <header class="header">
-    <div class="header-title"><i data-lucide="graduation-cap"></i>校园百事通</div>
+    <div class="header-title"><i data-lucide="graduation-cap"></i>E校园</div>
     <div style="display:flex;gap:var(--sp-4)">
       <span style="font-size:12px;color:var(--text-tertiary);display:flex;align-items:center;gap:4px" id="header-time">
         <i data-lucide="clock" style="width:14px;height:14px"></i><span id="time-display"></span>
@@ -589,7 +638,7 @@ body{
         <div class="profile-row">
           <div class="profile-avatar"><i data-lucide="graduation-cap" style="width:28px;height:28px;color:#fff"></i></div>
           <div class="profile-info">
-            <h3>校园百事通</h3>
+            <h3>E校园</h3>
             <p>知识库助手 · 24h 在线</p>
           </div>
         </div>
@@ -643,13 +692,13 @@ lucide.createIcons();
 try{if('serviceWorker'in navigator)navigator.serviceWorker.register('/static/sw.js')}catch(e){}
 
 // ===== Theme =====
-(function(){var t=localStorage.getItem('theme'),d=document.documentElement;if(t){d.setAttribute('data-theme',t)}else if(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches){d.setAttribute('data-theme','dark')}var m=document.querySelector('meta[name="theme-color"]');if(m&&d.getAttribute('data-theme')==='dark')m.setAttribute('content','#151412')})()
+(function(){var t=localStorage.getItem('theme'),d=document.documentElement;if(t){d.setAttribute('data-theme',t)}else if(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches){d.setAttribute('data-theme','dark')}var m=document.querySelector('meta[name="theme-color"]');if(m&&d.getAttribute('data-theme')==='dark'){m.setAttribute('content','#151412')}else if(m){m.setAttribute('content','#F7F9FC')}})()
 
 function toggleTheme(){
   var d=document.documentElement,on=d.getAttribute('data-theme')==='dark'
   d.setAttribute('data-theme',on?'':'dark')
   localStorage.setItem('theme',on?'':'dark')
-  document.querySelector('meta[name="theme-color"]').setAttribute('content',on?'#FDF8F5':'#151412')
+  document.querySelector('meta[name="theme-color"]').setAttribute('content',on?'#F7F9FC':'#151412')
   updateThemeUI()
 }
 function updateThemeUI(){
@@ -770,13 +819,53 @@ function renderQuickChips(){
   }))
 }
 
-function addChatMsg(text,isUser){
-  const area=document.getElementById('chat-area')
-  const welcome=document.getElementById('chat-welcome')
+function escHtml(s){return s.replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+
+function showToast(msg){
+  var t=document.getElementById('toast-el')
+  if(!t){t=document.createElement('div');t.id='toast-el';t.className='copy-toast';document.body.appendChild(t)}
+  t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show')},1800)
+}
+
+function enhanceCodeBlocks(root){
+  root.querySelectorAll('pre').forEach(function(pre){
+    if(pre.querySelector('.code-header'))return
+    var code=pre.querySelector('code');if(!code)return
+    var lang='',cls=code.className||'',m=cls.match(/language-(\w+)/)
+    if(m)lang=m[1]
+    var h=document.createElement('div');h.className='code-header'
+    var ct=code.textContent.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    h.innerHTML='<span>'+(lang||'code')+'</span><button class="code-copy" data-code="'+ct+'"><i data-lucide="clipboard"></i></button>'
+    pre.insertBefore(h,pre.firstChild)
+  })
+}
+
+function addChatMsg(text,isUser,opts){
+  opts=opts||{}
+  var area=document.getElementById('chat-area')
+  var welcome=document.getElementById('chat-welcome')
   if(welcome)welcome.style.display='none'
-  const div=document.createElement('div')
+  var div=document.createElement('div')
   div.className='chat-msg '+(isUser?'user':'bot')
-  div.innerHTML='<div class="chat-avatar '+(isUser?'user':'bot')+'">'+(isUser?'我':'AI')+'</div><div class="chat-bubble">'+text+'</div>'
+  if(isUser){
+    div.innerHTML='<div class="chat-avatar user"><i data-lucide="user"></i></div><div class="chat-bubble">'+escHtml(text)+'</div>'
+  }else{
+    var html=opts.html||escHtml(text)
+    if(html===escHtml(text))html='<p>'+html+'</p>'
+    else html=DOMPurify.sanitize(html)
+    div.setAttribute('data-raw',escHtml(text))
+    var srcHtml=''
+    if(opts.source){
+      srcHtml='<span class="chat-source '+opts.source.type+'"><i data-lucide="'+(opts.source.type==='kb'?'book-open':'globe')+'"></i>'+opts.source.label+'</span>'
+    }
+    div.innerHTML=
+      '<div class="chat-avatar bot"><i data-lucide="bot"></i></div>'+
+      '<div class="chat-content">'+
+        '<div class="chat-bubble">'+html+'</div>'+
+        '<div class="chat-footer">'+srcHtml+'<button class="msg-copy"><i data-lucide="clipboard-list"></i> 复制</button></div>'+
+      '</div>'
+    enhanceCodeBlocks(div)
+  }
   area.appendChild(div)
   area.scrollTop=area.scrollHeight
   lucide.createIcons()
@@ -791,23 +880,25 @@ document.getElementById('chat-input').addEventListener('keydown',function(e){
 })
 
 function doChat(q){
-  const input=document.getElementById('chat-input')
+  var input=document.getElementById('chat-input')
   input.value=''
   addChatMsg(q,true)
-  // Typing indicator
-  const area=document.getElementById('chat-area')
-  const typing=document.createElement('div')
+  var area=document.getElementById('chat-area')
+  var typing=document.createElement('div')
   typing.className='chat-msg bot typing'
-  typing.innerHTML='<div class="chat-avatar bot">AI</div><div class="chat-bubble"><span class="typing-dots"><span>.</span><span>.</span><span>.</span></span></div>'
+  typing.innerHTML='<div class="chat-avatar bot"><i data-lucide="bot"></i></div><div class="chat-bubble"><span class="typing-dots"><span>.</span><span>.</span><span>.</span></span></div>'
   area.appendChild(typing)
   area.scrollTop=area.scrollHeight
   fetch('/api/handbook',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q})})
-  .then(r=>r.json()).then(function(d){
+  .then(function(r){return r.json()}).then(function(d){
     typing.remove()
-    addChatMsg(d.answer+'<br><span style="font-size:12px;opacity:0.6">来源：'+d.category+' · '+d.related+'</span>',false)
+    var source=null
+    if(d.category&&d.category!=='AI'){source={type:'kb',label:d.category}}
+    else if(d.category==='AI'){source={type:'web',label:'互联网搜索'}}
+    addChatMsg(d.answer,false,{source:source,html:d.answer_html||''})
   }).catch(function(){
     typing.remove()
-    addChatMsg('网络异常，请稍后再试',false)
+    addChatMsg('网络异常，请稍后再试',false,{source:null})
   })
 }
 
@@ -872,6 +963,34 @@ document.addEventListener('keydown',function(e){
     if(o.classList.contains('open'))document.getElementById('detail-back').click()
   }
 })
+
+// ===== Copy handlers =====
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.msg-copy')
+  if(btn){
+    var msg=btn.closest('.chat-msg')
+    var raw=msg&&msg.getAttribute('data-raw')
+    if(raw){
+      var t=document.createElement('textarea');t.value=raw;t.style.position='fixed';t.style.opacity='0'
+      document.body.appendChild(t);t.select()
+      try{document.execCommand('copy')}catch(ex){}
+      document.body.removeChild(t)
+      showToast('已复制')
+    }
+    return
+  }
+  var cbtn=e.target.closest('.code-copy')
+  if(cbtn){
+    var code=cbtn.getAttribute('data-code')||''
+    var t=document.createElement('textarea');t.value=code;t.style.position='fixed';t.style.opacity='0'
+    document.body.appendChild(t);t.select()
+    try{document.execCommand('copy')}catch(ex){}
+    document.body.removeChild(t)
+    cbtn.innerHTML='<i data-lucide="check"></i>';setTimeout(function(){cbtn.innerHTML='<i data-lucide="clipboard"></i>';lucide.createIcons()},1500)
+    showToast('已复制代码')
+  }
+})
+
 </script>
 </body>
 </html>

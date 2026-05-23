@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+node_modules/
+screenshots/
+*.png
+*.pdf
+ocr_output.txt
+*.log
+.claude/

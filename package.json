@@ -1,0 +1,12 @@
+{
+  "name": "my-first-backend",
+  "version": "1.0.0",
+  "description": "Simple Express backend with /hello endpoint",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
