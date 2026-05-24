@@ -8,3 +8,4 @@ screenshots/
 ocr_output.txt
 *.log
 .claude/
+database.db
