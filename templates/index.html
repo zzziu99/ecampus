@@ -553,6 +553,82 @@ body{
 [data-theme="dark"] .chat-bubble th{background:var(--blue-3);color:var(--blue-11)}
 [data-theme="dark"] .chat-bubble blockquote{background:var(--blue-2)}
 [data-theme="dark"] .chat-source.kb{background:rgba(48,164,108,0.15);color:var(--green-10)}
+
+/* ========== TREEHOLE ========== */
+.treehole-header{padding:var(--sp-20) 0 var(--sp-16);text-align:center;margin-bottom:var(--sp-12)}
+.treehole-header-icon{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--blue-3),var(--blue-5));display:inline-flex;align-items:center;justify-content:center;margin-bottom:var(--sp-8);color:var(--blue-9)}
+.treehole-header-icon i{width:24px;height:24px}
+.treehole-header h2{margin:0;font-size:var(--font-2xl);font-weight:var(--font-bold);color:var(--text)}
+.treehole-header p{margin:var(--sp-4) 0 0;font-size:var(--font-secondary);color:var(--text-tertiary)}
+.treehole-card{background:var(--surface);border-radius:var(--radius-2xl);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);margin:0 var(--sp-8) var(--sp-16);overflow:hidden;transition:box-shadow .25s}
+.treehole-card:focus-within{box-shadow:0 0 0 3px var(--coral-glow),var(--shadow-md);border-color:var(--blue-7)}
+.treehole-input{width:100%;min-height:120px;padding:var(--sp-16);border:none;resize:none;font-size:var(--font-body);font-family:var(--font-stack);line-height:1.8;background:transparent;color:var(--text-primary);box-sizing:border-box;outline:none}
+.treehole-input::placeholder{color:var(--text-muted)}
+.treehole-footer{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-10) var(--sp-16) var(--sp-12);border-top:1px solid var(--border-light)}
+.treehole-counter{font-size:var(--font-2xs);color:var(--text-muted);font-feature-settings:"tnum"1}
+.treehole-submit{background:var(--coral);color:#fff;border:none;height:36px;padding:0 var(--sp-20);border-radius:18px;font-size:var(--font-secondary);font-weight:var(--font-semibold);cursor:pointer;transition:transform .2s,box-shadow .2s;letter-spacing:var(--tracking-wide);display:inline-flex;align-items:center;gap:var(--sp-4)}
+.treehole-submit:hover{transform:scale(1.03);box-shadow:0 4px 12px var(--coral-glow)}
+.treehole-submit:disabled{opacity:0.4;cursor:default;transform:none;box-shadow:none}
+.treehole-submit i{width:16px;height:16px}
+.treehole-list{display:flex;flex-direction:column;gap:var(--sp-8);padding:0 var(--sp-8) var(--sp-16)}
+.treehole-post{background:var(--surface);border-radius:var(--radius-xl);padding:var(--sp-16);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);transition:transform .15s}
+.treehole-post:active{transform:scale(0.99)}
+.treehole-post-header{display:flex;align-items:center;gap:var(--sp-8);margin-bottom:var(--sp-10);font-size:var(--font-2xs);color:var(--text-tertiary)}
+.treehole-post-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,var(--blue-3),var(--blue-7));color:var(--blue-9)}
+.treehole-post-avatar i{width:14px;height:14px}
+.treehole-post-anon{font-weight:var(--font-medium);font-size:var(--font-2xs);color:var(--text)}
+.treehole-post-time{margin-left:auto;font-size:10px}
+.treehole-post-content{font-size:var(--font-body);line-height:1.75;color:var(--text-primary);word-break:break-word}
+.treehole-loading{text-align:center;color:var(--text-tertiary);padding:var(--sp-32);font-size:var(--font-secondary)}
+.treehole-empty{text-align:center;padding:var(--sp-48) var(--sp-16);color:var(--text-tertiary)}
+.treehole-empty-icon{opacity:0.25;margin-bottom:var(--sp-8)}
+.treehole-empty-text{font-size:var(--font-secondary)}
+.treehole-more{text-align:center;padding:var(--sp-12);color:var(--blue-9);font-size:var(--font-secondary);font-weight:var(--font-medium);cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:var(--sp-4)}
+.treehole-more:hover{opacity:0.7}
+.treehole-more i{width:16px;height:16px}
+
+/* ========== NEWS ========== */
+.news-section{margin-top:var(--sp-24)}
+.news-section-header{margin-bottom:var(--sp-16)}
+.news-section-title{font-size:var(--font-display);font-weight:var(--font-bold);line-height:1.3;letter-spacing:var(--tracking-tight);color:var(--text);position:relative;display:inline-block}
+.news-section-title::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--coral),var(--sunny));opacity:0.5}
+.news-section-subtitle{font-size:var(--font-secondary);color:var(--text-tertiary);margin-top:var(--sp-8);letter-spacing:var(--tracking-wider)}
+.news-list{display:flex;flex-direction:column;gap:0;background:var(--surface);border-radius:var(--radius-xl);border:1px solid var(--border-light);overflow:hidden;box-shadow:var(--shadow-sm)}
+.news-item{display:block;padding:var(--sp-14) var(--sp-16);text-decoration:none;cursor:pointer;transition:background .2s;border-bottom:1px solid var(--border-light);position:relative}
+.news-item:last-child{border-bottom:none}
+.news-item:hover{background:var(--blue-1);z-index:1}
+.news-item:active{background:var(--blue-2)}
+.news-title{font-size:var(--font-body);font-weight:var(--font-medium);line-height:1.6;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s}
+.news-item:hover .news-title{color:var(--coral)}
+.news-meta{display:flex;align-items:center;gap:var(--sp-6);margin-top:var(--sp-6)}
+.news-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:var(--text-tertiary);font-weight:var(--font-medium);line-height:1.4;white-space:nowrap}
+.news-badge i{width:11px;height:11px;color:var(--text-muted)}
+.news-badge .dot{width:5px;height:5px;border-radius:50%;display:inline-block;background:var(--coral);margin-right:2px}
+.news-time{font-size:10px;color:var(--text-tertiary);margin-left:auto;white-space:nowrap}
+.news-more{display:flex;align-items:center;justify-content:center;gap:var(--sp-4);padding:var(--sp-12);color:var(--text-tertiary);font-size:var(--font-secondary);font-weight:var(--font-medium);cursor:pointer;transition:color .2s,background .2s;border:none;width:100%;background:transparent;border-top:1px solid var(--border-light)}
+.news-more:hover{color:var(--coral);background:var(--blue-1)}
+.news-more i{width:14px;height:14px;transition:transform .2s}
+.news-more:hover i{transform:translateX(3px)}
+.news-empty{text-align:center;padding:var(--sp-32);color:var(--text-tertiary);font-size:var(--font-secondary)}
+
+/* ========== CALENDAR ========== */
+.calendar-card{background:var(--surface);border-radius:var(--radius-xl);padding:var(--sp-16);margin:var(--sp-8) var(--sp-8) var(--sp-16);border:1px solid var(--border-light);box-shadow:var(--shadow-sm)}
+.calendar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-16)}
+.calendar-title{font-size:var(--font-subtitle);font-weight:var(--font-bold);display:flex;align-items:center;gap:var(--sp-8)}
+.calendar-title i{color:var(--coral)}
+.calendar-semester{font-size:var(--font-2xs);color:var(--text-tertiary);background:var(--coral-light);padding:2px 10px;border-radius:10px;font-weight:var(--font-medium)}
+.calendar-term{display:flex;align-items:center;padding:var(--sp-10) 0;border-bottom:1px solid var(--border-light)}
+.calendar-term:last-child{border-bottom:none}
+.calendar-term-name{flex:1;font-size:var(--font-body);font-weight:var(--font-medium)}
+.calendar-term-date{font-size:var(--font-secondary);color:var(--text-tertiary)}
+.calendar-term-dot{width:6px;height:6px;border-radius:50%;margin-right:var(--sp-10);flex-shrink:0}
+.dot-coral{background:var(--coral)}
+.dot-sunny{background:var(--sunny)}
+.dot-mint{background:var(--mint)}
+.dot-slate{background:var(--slate)}
+
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
 </style>
 </head>
 <body>
@@ -601,7 +677,15 @@ body{
         <div class="quick-item" style="pointer-events:none"><div class="skeleton" style="width:40px;height:40px;border-radius:var(--radius-md)"></div><span class="skeleton" style="width:48px;height:12px"></span></div>
       </div>
 
-      <div class="section-header"><h3 style="display:flex;align-items:center;gap:var(--sp-4)"><i data-lucide="bell" style="width:16px;height:16px;color:var(--coral)"></i>最新通知</h3></div>
+      <div class="news-section">
+        <div class="news-section-header">
+          <h2 class="news-section-title">校园动态</h2>
+          <p class="news-section-subtitle">了解北交最新资讯</p>
+        </div>
+        <div class="news-list" id="news-list">
+          <div class="news-empty">加载中…</div>
+        </div>
+<h3 style="display:flex;align-items:center;gap:var(--sp-4)"><i data-lucide="bell" style="width:16px;height:16px;color:var(--coral)"></i>最新通知</h3></div>
       <div class="notice-list" id="notice-list">
         <div class="notice-item" style="pointer-events:none"><div class="skeleton" style="width:8px;height:8px;border-radius:50%"></div><span class="skeleton" style="flex:1;height:14px"></span><span class="skeleton" style="width:40px;height:12px"></span></div>
         <div class="notice-item" style="pointer-events:none"><div class="skeleton" style="width:8px;height:8px;border-radius:50%"></div><span class="skeleton" style="flex:1;height:14px"></span><span class="skeleton" style="width:40px;height:12px"></span></div>
@@ -632,6 +716,26 @@ body{
       </div>
     </div>
 
+
+    <!-- ===== TAB: 树洞 ===== -->
+    <div class="tab" id="tab-treehole">
+      <div class="treehole-header">
+        <div class="treehole-header-icon"><i data-lucide="message-circle"></i></div>
+        <h2>树洞</h2>
+        <p>匿名分享，说说你的心里话</p>
+      </div>
+      <div class="treehole-card">
+        <textarea class="treehole-input" id="treehole-input" placeholder="今天有什么想说的？" maxlength="500"></textarea>
+        <div class="treehole-footer">
+          <span class="treehole-counter" id="treehole-counter">0/500</span>
+          <button class="treehole-submit" id="treehole-submit"><i data-lucide="send"></i>发布</button>
+        </div>
+      </div>
+      <div class="treehole-list" id="treehole-list">
+        <div class="treehole-loading">加载中…</div>
+      </div>
+    </div>
+
     <!-- ===== TAB: 我的 ===== -->
     <div class="tab" id="tab-profile">
       <div class="profile-card">
@@ -658,6 +762,18 @@ body{
         </div>
       </div>
       <div class="profile-section">
+              <div class="profile-section">
+        <h4>校历</h4>
+        <div id="calendar-body">
+          <div class="calendar-card">
+            <div class="calendar-header">
+              <div class="calendar-title"><i data-lucide="calendar"></i><span id="cal-year">2025-2026</span></div>
+              <span class="calendar-semester" id="cal-semester">第二学期</span>
+            </div>
+            <div id="cal-terms"><div class="calendar-term"><span class="calendar-term-name" style="color:var(--text-tertiary)">加载中…</span></div></div>
+          </div>
+        </div>
+      </div>
         <h4>数据来源</h4>
         <div class="profile-list">
           <button class="profile-item"><i data-lucide="database"></i>知识库版本<span class="spacer"></span><span class="arrow" data-lucide="chevron-right"></span></button>
@@ -672,6 +788,7 @@ body{
     <button class="nav-btn active" data-tab="home"><i data-lucide="home"></i><span>首页</span></button>
     <button class="nav-btn" data-tab="browse"><i data-lucide="compass"></i><span>浏览</span></button>
     <button class="nav-btn" data-tab="chat"><i data-lucide="message-square"></i><span>智聊</span></button>
+    <button class="nav-btn" data-tab="treehole"><i data-lucide="message-circle"></i><span>树洞</span>
     <button class="nav-btn" data-tab="profile"><i data-lucide="user"></i><span>我的</span></button>
   </nav>
 </div>
@@ -686,7 +803,7 @@ body{
 </div>
 
 <script>
-lucide.createIcons();
+try{typeof lucide!=="undefined"&&lucide.createIcons()}catch(e){}
 
 // ===== Service Worker =====
 try{if('serviceWorker'in navigator)navigator.serviceWorker.register('/static/sw.js')}catch(e){}
@@ -748,7 +865,9 @@ Promise.all([
   renderNoticeList()
   renderBrowse()
   renderQuickChips()
-  lucide.createIcons()
+  loadNews()
+  loadCalendar()
+  typeof lucide!=="undefined"&&lucide.createIcons()
   updateThemeUI()
 }).catch(function(){updateThemeUI()})
 
@@ -766,7 +885,7 @@ function renderQuickGrid(){
     return '<button class="quick-item" data-cat="'+c+'"><div class="quick-icon '+catColor(i)+'"><i data-lucide="'+icon+'"></i></div>'+c+'</button>'
   }).join('')
   g.querySelectorAll('.quick-item').forEach(el=>el.addEventListener('click',()=>openCategory(el.dataset.cat)))
-  lucide.createIcons()
+  typeof lucide!=="undefined"&&lucide.createIcons()
 }
 
 // ===== Notice List =====
@@ -804,7 +923,7 @@ function renderCatGrid(idx){
   const icon=ICON_MAP[cat]||'file'
   grid.innerHTML='<button class="cat-card" style="grid-column:1/-1" data-cat="'+cat+'"><div class="cat-card-icon '+catColor(idx)+'"><i data-lucide="'+icon+'"></i></div><div class="cat-card-info"><div class="cat-card-name">'+cat+'</div><div class="cat-card-count">共 '+items.length+' 条问答</div></div><i data-lucide="chevron-right" class="cat-card-arrow"></i></button>'
   grid.querySelector('.cat-card').addEventListener('click',()=>openCategory(cat))
-  lucide.createIcons()
+  typeof lucide!=="undefined"&&lucide.createIcons()
 }
 
 // ===== Chat =====
@@ -868,7 +987,7 @@ function addChatMsg(text,isUser,opts){
   }
   area.appendChild(div)
   area.scrollTop=area.scrollHeight
-  lucide.createIcons()
+  typeof lucide!=="undefined"&&lucide.createIcons()
 }
 
 document.getElementById('chat-send').addEventListener('click',()=>{
@@ -986,11 +1105,150 @@ document.addEventListener('click',function(e){
     document.body.appendChild(t);t.select()
     try{document.execCommand('copy')}catch(ex){}
     document.body.removeChild(t)
-    cbtn.innerHTML='<i data-lucide="check"></i>';setTimeout(function(){cbtn.innerHTML='<i data-lucide="clipboard"></i>';lucide.createIcons()},1500)
+    cbtn.innerHTML='<i data-lucide="check"></i>';setTimeout(function(){cbtn.innerHTML='<i data-lucide="clipboard"></i>';typeof lucide!=="undefined"&&lucide.createIcons()},1500)
     showToast('已复制代码')
   }
 })
 
+
+// ===== Treehole =====
+var treeholePage = 1
+var treeholeLoading = false
+
+document.getElementById('treehole-input')?.addEventListener('input', function(){
+  var len = this.value.length
+  document.getElementById('treehole-counter').textContent = len + '/500'
+})
+
+document.getElementById('treehole-submit')?.addEventListener('click', function(){
+  var input = document.getElementById('treehole-input')
+  var content = input.value.trim()
+  if(!content) return
+  var btn = document.getElementById('treehole-submit')
+  btn.disabled = true
+  btn.innerHTML = '<i data-lucide="loader-2" style="animation:spin 1s linear infinite"></i>发布中'
+
+  fetch('/api/treehole', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({content: content})
+  }).then(function(r){return r.json()}).then(function(data){
+    if(data.success){
+      input.value = ''
+      document.getElementById('treehole-counter').textContent = '0/500'
+      treeholePage = 1
+      loadTreehole(true)
+    }
+    btn.disabled = false; btn.innerHTML = '<i data-lucide="send"></i>发布'
+    typeof lucide!=="undefined"&&lucide.createIcons()
+  }).catch(function(){
+    btn.disabled = false; btn.innerHTML = '<i data-lucide="send"></i>发布'
+    alert('发布失败，请重试')
+    typeof lucide!=="undefined"&&lucide.createIcons()
+  })
+})
+
+function loadTreehole(reset){
+  if(treeholeLoading) return
+  treeholeLoading = true
+  var list = document.getElementById('treehole-list')
+  if(reset) list.innerHTML = '<div class="treehole-loading">加载中…</div>'
+
+  fetch('/api/treehole?page=' + treeholePage)
+    .then(function(r){return r.json()})
+    .then(function(data){
+      treeholeLoading = false
+      if(data.posts.length === 0 && treeholePage === 1){
+        list.innerHTML = '<div class="treehole-empty"><div class="treehole-empty-icon"><i data-lucide="message-circle" style="width:40px;height:40px"></i></div><div class="treehole-empty-text">还没有帖子，来说点什么吧</div></div>'
+        typeof lucide!=="undefined"&&lucide.createIcons()
+        return
+      }
+      if(reset) list.innerHTML = ''
+      data.posts.forEach(function(p){
+        var div = document.createElement('div')
+        div.className = 'treehole-post'
+        div.innerHTML =
+          '<div class="treehole-post-header">' +
+            '<div class="treehole-post-avatar"><i data-lucide="user"></i></div>' +
+            '<span class="treehole-post-anon">匿名同学</span>' +
+            '<span class="treehole-post-time">' + p.created_at + '</span>' +
+          '</div>' +
+          '<div class="treehole-post-content">' + DOMPurify.sanitize(p.content) + '</div>'
+        list.appendChild(div)
+      })
+      if(treeholePage < data.pages && !reset){
+        var more = document.createElement('div')
+        more.className = 'treehole-more'
+        more.innerHTML = '加载更多 <i data-lucide="chevron-down"></i>'
+        more.addEventListener('click', function(){
+          treeholePage++
+          loadTreehole(false)
+        })
+        list.appendChild(more)
+      }
+      typeof lucide!=="undefined"&&lucide.createIcons()
+    })
+    .catch(function(){ treeholeLoading = false })
+}
+
+// Load treehole when tab becomes active
+document.querySelector('.nav-btn[data-tab="treehole"]')?.addEventListener('click', function(){
+  if(document.getElementById('tab-treehole').classList.contains('active')){
+    treeholePage = 1
+    loadTreehole(true)
+  }
+})
+
+// ===== News =====
+function loadNews(){
+  var list = document.getElementById('news-list')
+  fetch('/api/news').then(function(r){return r.json()}).then(function(data){
+    if(!data.news || data.news.length === 0){
+      list.innerHTML = '<div class="news-empty">暂无新闻</div>'
+      return
+    }
+    var html = data.news.slice(0,5).map(function(n){
+      var title = DOMPurify.sanitize(n.title || '')
+      var date = n.date || ''
+      var link = n.link || n.url || '#'
+      return '<a class="news-item" href="' + link + '" target="_blank" rel="noopener">' +
+        '<div class="news-title">' + title + '</div>' +
+        '<div class="news-meta">' +
+          '<span class="news-badge"><span class="dot"></span>北交新闻</span>' +
+          (date ? '<span class="news-time">' + date + '</span>' : '') +
+        '</div>' +
+      '</a>'
+    }).join('')
+          if(data.news && data.news.length > 5){
+        html += '<button class="news-more" id="news-more-btn">查看全部 <i data-lucide="arrow-right"></i></button>'
+      }
+      list.innerHTML = html
+      typeof lucide!=="undefined"&&lucide.createIcons()
+      var moreBtn = document.getElementById('news-more-btn')
+      if(moreBtn) moreBtn.addEventListener('click', function(){ window.open('http://news.bjtu.edu.cn') })
+    typeof lucide!=="undefined"&&lucide.createIcons()
+  }).catch(function(){
+    list.innerHTML = '<div class="news-empty">新闻加载失败</div>'
+  })
+}
+
+// ===== Calendar =====
+function loadCalendar(){
+  fetch('/api/calendar').then(function(r){return r.json()}).then(function(data){
+    document.getElementById('cal-year').textContent = data.year || '2025-2026'
+    document.getElementById('cal-semester').textContent = data.semester || ''
+    var terms = document.getElementById('cal-terms')
+    var dots = ['dot-coral','dot-sunny','dot-mint','dot-slate']
+    terms.innerHTML = (data.terms || []).map(function(t, i){
+      return '<div class="calendar-term">' +
+        '<div class="calendar-term-dot ' + dots[i % 4] + '"></div>' +
+        '<span class="calendar-term-name">' + t.name + '</span>' +
+        '<span class="calendar-term-date">' + t.date + '</span>' +
+        '</div>'
+    }).join('')
+    typeof lucide!=="undefined"&&lucide.createIcons()
+  }).catch(function(){})
+}
 </script>
 </body>
 </html>

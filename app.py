@@ -4,6 +4,8 @@ from flask import Flask, jsonify, request, render_template
 from duckduckgo_search import DDGS
 from dotenv import load_dotenv
 import markdown as md
+import bjtu_news
+import campus_features
 
 load_dotenv()
 
@@ -21,6 +23,16 @@ def get_db():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
+
+
+def init_db():
+    conn = get_db()
+    conn.execute('CREATE TABLE IF NOT EXISTS treehole (id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT NOT NULL, created_at TEXT)')
+    conn.commit()
+    conn.close()
+
+
+init_db()
 
 
 def get_tables():
@@ -303,6 +315,15 @@ def search_all():
         })
 
 
+@app.route('/api/news')
+def get_news():
+    """获取最新校园新闻"""
+    results = bjtu_news.get_latest_news()
+    if isinstance(results, dict) and 'error' in results:
+        return jsonify({'news': [], 'error': results['error']}), 502
+    return jsonify({'news': results, 'total': len(results)})
+
+
 @app.route('/api/stats')
 def get_stats():
     conn = get_db()
@@ -322,6 +343,76 @@ def get_stats():
         'total_qa': total_qa,
         'avg_per_category': round(total_qa / total_categories) if total_categories > 0 else 0
     })
+
+
+@app.route('/api/campus/eat')
+def campus_eat():
+    """今天吃啥 - 随机食堂推荐"""
+    campus = request.args.get('campus', '').strip() or None
+    food_type = request.args.get('type', '').strip() or None
+    return jsonify(campus_features.recommend_canteen(campus, food_type))
+
+
+@app.route('/api/campus/canteens')
+def campus_canteens():
+    """食堂列表"""
+    return jsonify(campus_features.CANTEENS)
+
+
+# ===== 树洞 API =====
+@app.route('/api/treehole', methods=['GET', 'POST'])
+def treehole():
+    if request.method == 'POST':
+        data = request.get_json() or {}
+        content = data.get('content', '').strip()
+        if not content:
+            return jsonify({'error': '内容不能为空'}), 400
+        if len(content) > 500:
+            return jsonify({'error': '内容不能超过500字'}), 400
+        conn = get_db()
+        conn.execute('INSERT INTO treehole (content, created_at) VALUES (?, datetime("now","localtime"))', (content,))
+        conn.commit()
+        conn.close()
+        return jsonify({'success': True})
+
+    # GET
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+    conn = get_db()
+    total = conn.execute('SELECT COUNT(*) FROM treehole').fetchone()[0]
+    rows = conn.execute(
+        'SELECT id, content, created_at FROM treehole ORDER BY id DESC LIMIT ? OFFSET ?',
+        (per_page, (page - 1) * per_page)
+    ).fetchall()
+    conn.close()
+    return jsonify({
+        'posts': [dict(r) for r in rows],
+        'total': total,
+        'page': page,
+        'pages': (total + per_page - 1) // per_page
+    })
+
+
+# ===== 校历 API =====
+ACADEMIC_CALENDAR = {
+    "year": "2025-2026",
+    "semester": "第二学期",
+    "terms": [
+        {"name": "报到注册", "date": "2026年2月28日-3月1日"},
+        {"name": "正式上课", "date": "2026年3月2日"},
+        {"name": "清明节放假", "date": "2026年4月4日-6日"},
+        {"name": "期中考试", "date": "2026年4月下旬-5月上旬"},
+        {"name": "运动会", "date": "2026年5月中旬"},
+        {"name": "劳动节放假", "date": "2026年5月1日-5日"},
+        {"name": "端午节放假", "date": "2026年6月12日-14日"},
+        {"name": "期末考试", "date": "2026年6月下旬-7月上旬"},
+        {"name": "暑假开始", "date": "2026年7月中旬"},
+    ]
+}
+
+@app.route('/api/calendar')
+def get_calendar():
+    return jsonify(ACADEMIC_CALENDAR)
 
 
 if __name__ == '__main__':
